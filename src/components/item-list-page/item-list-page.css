@@ -1,5 +1,5 @@
 .ItemListPage{
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  margin-top: 20px;
 }
