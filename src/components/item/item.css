@@ -1,0 +1,60 @@
+.Item{
+  background-color: white;
+  padding: 15px;
+  margin: 20px 40px 40px 40px;
+  display: grid;
+  grid-template-rows: 10fr 1fr 1fr 1fr;
+  width: 230px;
+  height: 300px;
+
+  border-radius: 20px;
+  box-shadow: 1px 1px 2px rgb(56, 96, 136);
+
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+.Item:hover {
+  box-shadow: 1px 1px 2px rgb(56, 96, 136) inset;
+  transition-timing-function: ease-in-out;
+}
+
+.Item .rating{
+  display: flex;
+  align-items: center;
+}
+
+.Item .title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.Item .price .without-discount {
+  text-decoration: line-through;
+}
+
+.item .price {
+  padding-top: 10px;
+}
+
+.Item .price .with-discount {
+  margin-right: 0.5em;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: brown;
+  transition-duration: 0.3s;
+}
+
+.Item .imageUrl {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+}
