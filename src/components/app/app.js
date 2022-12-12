@@ -1,15 +1,19 @@
 import React from 'react'
+import ErrorBoundry from '../error-boundry'
 import Header from '../header'
 import LoginPage from '../login-page'
 
 import './app.css'
 
 const App = () => {
-    
-    return <div>
+  return (
+    <div className='App-container'>
+      <ErrorBoundry>
         <Header />
-        <LoginPage />
-        </div>
+        {/* <LoginPage /> */}
+      </ErrorBoundry>
+    </div>
+  )
 }
 
 export default App
