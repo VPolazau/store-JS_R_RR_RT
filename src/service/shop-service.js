@@ -16,9 +16,9 @@ const getResourse = async url => {
   return await res.json()
 }
 
-const getAllProducts = async (skip, limit, dispatch) => {
+const getAllProducts = async (skip, dispatch) => {
   dispatch(updateLoadState(1))
-  const res = await getResourse(`/products?skip=${skip}&limit=${limit}`)
+  const res = await getResourse(`/products?skip=${skip}&limit=20`)
   dispatch(updateLoadState(2))
   dispatch(updateProducts(res.products.map(_transformProducts)))
 }
