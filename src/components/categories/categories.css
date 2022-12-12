@@ -1,0 +1,15 @@
+.Categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.Categories .span-Categories {
+  margin: 0px auto 10px 10px;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.Categories .toggle-btn-Categories {
+  background-color: white;
+}
