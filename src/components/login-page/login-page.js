@@ -3,10 +3,13 @@ import TextField from '@mui/material/TextField'
 import { Button } from '@mui/material'
 
 import './login-page.css'
+import { useDispatch } from 'react-redux'
 
 const LoginPage = () => {
   const inputNameRef = useRef()
   const [input, setInput] = useState('')
+  const dispatch = useDispatch()
+
 
   return (
     <div className='LoginPage'>
@@ -23,7 +26,7 @@ const LoginPage = () => {
           variant='contained'
           className='user-enter-btn'
           disabled={input === '' ? true : false}
-          onClick={()=>console.log(`Save User, ${input}`)}
+          onClick={()=> console.log('user add')}
         >
           Enter
         </Button>
