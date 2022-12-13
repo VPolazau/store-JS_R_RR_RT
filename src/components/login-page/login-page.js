@@ -4,12 +4,16 @@ import { Button } from '@mui/material'
 
 import './login-page.css'
 import { useDispatch } from 'react-redux'
+import { addUser } from '../../store/reducers/storeDataSlice'
 
 const LoginPage = () => {
   const inputNameRef = useRef()
   const [input, setInput] = useState('')
   const dispatch = useDispatch()
 
+  const handlerAddUser = () => {
+    dispatch(addUser(inputNameRef.current.value))
+  }
 
   return (
     <div className='LoginPage'>
@@ -26,7 +30,7 @@ const LoginPage = () => {
           variant='contained'
           className='user-enter-btn'
           disabled={input === '' ? true : false}
-          onClick={()=> console.log('user add')}
+          onClick={handlerAddUser}
         >
           Enter
         </Button>

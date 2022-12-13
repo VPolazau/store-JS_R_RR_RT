@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import Button from '@mui/material/Button'
 import { IconButton } from '@mui/material'
@@ -7,11 +8,17 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import './header.css'
 
 const Header = () => {
-  const isEntered = true
-  const name = 'Victor'
-  const number = 1
+  const user = useSelector(store => store.storeData.user)
+  const cart = useSelector(store => store.storeData.cart)
+  const { isEntered, name } = user
+  const [amountItemsInCart, setAmountItemsInCart] = useState(0)
 
-  const guest = (
+  useEffect(() => {
+    if (cart.length === 0) setAmountItemsInCart(0)
+    else setAmountItemsInCart(cart.reduce((acc, item) => acc + item.count, 0))
+  }, [cart])
+
+  const guestView = (
     <div className='Header'>
       <span className='logo'>Online Store</span>
       <Button variant='outlined' className='login ml'>
@@ -20,12 +27,12 @@ const Header = () => {
     </div>
   )
 
-  const user = (
+  const userView = (
     <div className='Header'>
       <span className='logo'>Online Store</span>
       <span className='hello ml'>Hello, {name}</span>
-      {number ? (
-        <IconButton className='cart-btn with-count' count={number}>
+      {amountItemsInCart ? (
+        <IconButton className='cart-btn with-count' count={amountItemsInCart}>
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       ) : (
@@ -36,7 +43,7 @@ const Header = () => {
     </div>
   )
 
-  return isEntered ? user : guest
+  return isEntered ? userView : guestView
 }
 
 export default Header

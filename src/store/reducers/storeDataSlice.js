@@ -17,7 +17,7 @@ const initialState = {
       stock: null,
     },
   },
-  user: { isEntered: true, name: '' },
+  user: { isEntered: false, name: '' },
   cart: [],
 }
 
@@ -37,6 +37,10 @@ export const storeDataSlice = createSlice({
       state.singleItem = action.payload
     },
 
+    addUser: (state, action) => {
+      state.user = { isEntered: true, name: action.payload }
+    },
+
     addItemCart: (state, action) => {
       if(state.cart.some(item => item.id === action.payload.id)){
         state.cart.find(item => item.id === action.payload.id).count++
@@ -49,10 +53,9 @@ export const storeDataSlice = createSlice({
           state.cart.splice(indx, 1)
         } else state.cart.find(item => item.id === action.payload.id).count--
     },
-
   },
 })
 
-export const { updateLoadState, updateProducts, updateSigleItem, addItemCart, incItemCart } = storeDataSlice.actions
+export const { updateLoadState, updateProducts, updateSigleItem, addItemCart, incItemCart,  addUser} = storeDataSlice.actions
 
 export default storeDataSlice.reducer
