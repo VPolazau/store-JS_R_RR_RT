@@ -49,7 +49,6 @@ const ItemInfo = () => {
     dispatch(addItemCart({ id, img: images[0], title, count: 1, price }))
   }
 
-  console.log(cart)
   if (id == -1) return
   return (
     <div className='ItemInfo'>

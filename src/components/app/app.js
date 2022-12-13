@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 
 import ErrorBoundry from '../error-boundry'
 import Header from '../header'
 import LoginPage from '../login-page'
-import ItemListPage from '../item-list-page/item-list-page'
+import ItemListPage from '../item-list-page'
+import ItemInfo from '../item-info'
+import CartItemList from '../cart-item-list'
 
 import './app.css'
-import ItemInfo from '../item-info/item-info'
-
 
 const App = () => {
   // const storeData = useSelector(store => store.storeData)
@@ -20,7 +19,8 @@ const App = () => {
         <Header />
         {/* <LoginPage /> */}
         {/* <ItemListPage /> */}
-        <ItemInfo />
+        {/* <ItemInfo /> */}
+        <CartItemList />
       </ErrorBoundry>
     </div>
   )

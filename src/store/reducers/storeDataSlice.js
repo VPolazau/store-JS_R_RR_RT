@@ -42,20 +42,33 @@ export const storeDataSlice = createSlice({
     },
 
     addItemCart: (state, action) => {
-      if(state.cart.some(item => item.id === action.payload.id)){
+      if (state.cart.some(item => item.id === action.payload.id)) {
         state.cart.find(item => item.id === action.payload.id).count++
       } else state.cart.push(action.payload)
     },
 
-    incItemCart: (state, action) => {
-        if(state.cart.find(item => item.id === action.payload.id).count === 0){
-          const indx = state.cart.findIndex(item => item.id === action.payload.id)
-          state.cart.splice(indx, 1)
-        } else state.cart.find(item => item.id === action.payload.id).count--
+    decItemCart: (state, action) => {
+      if (state.cart.find(item => item.id === action.payload).count == 1) {
+        const indx = state.cart.findIndex(item => item.id === action.payload)
+        state.cart.splice(indx, 1)
+      } else state.cart.find(item => item.id === action.payload).count--
     },
+
+    removeItemCart: (state, action) => {
+      const indx = state.cart.findIndex(item => item.id === action.payload)
+      state.cart.splice(indx, 1)
+    }
   },
 })
 
-export const { updateLoadState, updateProducts, updateSigleItem, addItemCart, incItemCart,  addUser} = storeDataSlice.actions
+export const {
+  updateLoadState,
+  updateProducts,
+  updateSigleItem,
+  addItemCart,
+  decItemCart,
+  removeItemCart,
+  addUser,
+} = storeDataSlice.actions
 
 export default storeDataSlice.reducer
