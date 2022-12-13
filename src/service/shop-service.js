@@ -17,28 +17,29 @@ const getResourse = async url => {
 }
 
 const getAllProducts = async (skip, dispatch) => {
-  dispatch(updateLoadState(1))
+  dispatch(updateLoadState(0))
   const res = await getResourse(`/products?skip=${skip}&limit=20`)
-  dispatch(updateLoadState(2))
+  dispatch(updateLoadState(1))
   dispatch(updateProducts(res.products.map(_transformProducts)))
 }
 
 const getSingleItem = async (id, dispatch) => {
-  dispatch(updateLoadState(1))
+  dispatch(updateLoadState(0))
   const item = await getResourse(`/products/${id}`)
-  dispatch(updateLoadState(2))
+  dispatch(updateLoadState(1))
   dispatch(updateSigleItem(_transformSingleItem(item)))
 }
 
 const getProductsByCategory = async (category, dispatch) => {
-  dispatch(updateLoadState(1))
+  dispatch(updateLoadState(0))
   const res = await getResourse(`/products/category/${category}`)
-  dispatch(updateLoadState(2))
+  dispatch(updateLoadState(1))
   dispatch(updateProducts(res.products.map(_transformProducts)))
 }
 
 const getCategories = async () => {
   const res = await getResourse('/products/categories')
+  res.unshift('all')
   return res
 }
 

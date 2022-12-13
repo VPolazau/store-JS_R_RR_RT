@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  dataLoadState: 0, // 0 - not loaded, 1 - is loading, 2 - loaded
+  dataLoadState: 0, // 0 - is loading, 1 - loaded
   products: [],
   singleItem: null,
   user: { isEntered: false, name: '' },
