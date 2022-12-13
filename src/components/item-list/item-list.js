@@ -34,10 +34,10 @@ const ItemList = () => {
     setPage(value)
   }
 
-  console.log(products)
   return (
     <div className='ItemList'>
       <div className='list'>
+
         {products.map(item => (
           <Item key={item.id} id={item.id} info={item.body} />
         ))}

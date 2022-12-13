@@ -33,9 +33,6 @@ const Categories = () => {
         aria-label='Platform'
         orientation='vertical'
       >
-        <ToggleButton key={'all'} value='all'>
-          All
-        </ToggleButton>
         {categories.map(category => (
           <ToggleButton key={category} value={category}>
             {category}
