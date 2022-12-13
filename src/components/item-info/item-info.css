@@ -1,0 +1,100 @@
+.ItemInfo .ItemInfo-btn-back {
+  margin: 20px 0px;
+}
+
+.ItemInfo .info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 30px;
+}
+.ItemInfo .info .info-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.ItemInfo .info .info-left .imageUrl {
+  height: 300px;
+  width: 430px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  margin: 0px 30px 30px 0px;
+}
+
+.ItemInfo .info .info-left .image {
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.ItemInfo .info .info-right {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.ItemInfo .info .info-right .title {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.ItemInfo .info .info-right .brand {
+  font-size: 2rem;
+  font-weight: 200;
+  margin: 5px 30px;
+}
+
+.ItemInfo .info .info-right .category {
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin: 5px 30px;
+}
+
+.ItemInfo .info .info-right .price {
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin: 5px 30px;
+}
+
+.ItemInfo .info .info-right .price .without-discount {
+  text-decoration: line-through;
+}
+
+.ItemInfo .info .info-right .price .with-discount {
+  margin-right: 0.5em;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: brown;
+  transition-duration: 0.3s;
+}
+
+.ItemInfo .info .info-right .rating {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin: 5px 30px;
+}
+
+.ItemInfo .info .info-right .stock {
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin: 5px 30px;
+}
+
+.ItemInfo .info .info-right .description {
+  margin-top: 60px;
+  border-top: 2px solid black;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.ItemInfo .info .info-right .description p{
+  font-size: 1.3rem;
+  font-weight: 400;
+}

@@ -7,6 +7,7 @@ import LoginPage from '../login-page'
 import ItemListPage from '../item-list-page/item-list-page'
 
 import './app.css'
+import ItemInfo from '../item-info/item-info'
 
 
 const App = () => {
@@ -18,7 +19,8 @@ const App = () => {
       <ErrorBoundry>
         <Header />
         {/* <LoginPage /> */}
-        <ItemListPage />
+        {/* <ItemListPage /> */}
+        <ItemInfo />
       </ErrorBoundry>
     </div>
   )
