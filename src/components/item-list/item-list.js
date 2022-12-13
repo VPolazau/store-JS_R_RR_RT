@@ -31,6 +31,8 @@ const ItemList = () => {
   }, [])
 
   const handleChange = (event, value) => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     setPage(value)
   }
 
@@ -44,7 +46,7 @@ const ItemList = () => {
       </div>
       {category === 'all' ? (
         <Stack spacing={2} sx={{ marginLeft: 'auto', marginRight: '5%' }}>
-          <Pagination count={5} onChange={handleChange} href='#top' page={page} />
+          <Pagination count={5} onChange={handleChange} page={page} />
         </Stack>
       ) : null}
     </div>
