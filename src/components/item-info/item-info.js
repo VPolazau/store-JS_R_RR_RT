@@ -33,17 +33,17 @@ const ItemInfo = () => {
     description,
   } = body
 
-  // useEffect(() => {
-  //   if (images.length == 0) return
-  //   setImg(images[0])
-  //   const timer = setInterval(
-  //     () => setImg(images[Math.floor(Math.random() * images.length)]),
-  //     5000
-  //   )
-  //   return () => {
-  //     clearTimeout(timer)
-  //   }
-  // }, [images])
+  useEffect(() => {
+    if (images.length == 0) return
+    setImg(images[0])
+    const timer = setInterval(
+      () => setImg(images[Math.floor(Math.random() * images.length)]),
+      5000
+    )
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [images])
 
   const addItemToCart = () => {
     dispatch(addItemCart({ id, img: images[0], title, count: 1, price }))
