@@ -1,12 +1,17 @@
 import React from 'react'
-import { Rating } from '@mui/material'
-import Skeleton from '@mui/material/Skeleton'
-
-import './item.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
+import { IconButton, Rating } from '@mui/material'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import Skeleton from '@mui/material/Skeleton'
+
+import { addItemCart } from '../../store/reducers/storeDataSlice'
+
+import './item.css'
+
 const Item = ({ id, info }) => {
+  const dispatch = useDispatch()
   const loadingType = useSelector(store => store.storeData.dataLoadState)
   const user = useSelector(store => store.storeData.user)
   let navigate = useNavigate()
@@ -16,6 +21,11 @@ const Item = ({ id, info }) => {
     user.isEntered
       ? navigate(`/user-${user.name}/product/${id}`)
       : navigate(`/user-guest/product/${id}`)
+  }
+
+  const addToCart = (event) => {
+    event.stopPropagation()
+    dispatch(addItemCart({id, img: imageUrl, title, count: 1, price}))
   }
 
   const onLoadView = (
@@ -55,11 +65,16 @@ const Item = ({ id, info }) => {
           size='small'
         />
       </div>
-      <div className='price'>
-        <span className='with-discount'>{price}$</span>
-        <span className='without-discount'>
-          {(price * discountPercentage).toFixed(0)}$
-        </span>
+      <div className='price_n_btn'>
+        <div className='price'>
+          <span className='with-discount'>{price}$</span>
+          <span className='without-discount'>
+            {(price * discountPercentage).toFixed(0)}$
+          </span>
+        </div>
+        <IconButton color='primary' aria-label='add to shopping cart' onClick={addToCart} disabled={user.isEntered ? false : true}>
+          <AddShoppingCartIcon />
+        </IconButton>
       </div>
     </>
   )

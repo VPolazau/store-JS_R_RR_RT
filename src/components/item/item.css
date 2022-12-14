@@ -30,15 +30,17 @@
   font-size: 18px;
 }
 
-.Item .price .without-discount {
+.Item .price_n_btn .price .without-discount {
   text-decoration: line-through;
 }
 
-.item .price {
-  padding-top: 10px;
+.Item .price_n_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.Item .price .with-discount {
+.Item .price_n_btn .price .with-discount {
   margin-right: 0.5em;
   font-size: 1.1em;
   font-weight: bold;
