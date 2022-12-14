@@ -28,7 +28,7 @@ const CartItem = ({ info }) => {
   return (
     <div className='CartItem'>
       <div className='imageUrl'>
-        <img src={`${img}`} alt='image item' className='image' />
+        <img src={`${img}`} alt='cartItemImage' className='image' />
       </div>
       <div className='info'>
         <div className='title'>{title}</div>
@@ -38,7 +38,7 @@ const CartItem = ({ info }) => {
               variant='text'
               className='counter-btn'
               onClick={dec}
-              disabled={count == 1 ? true : false}
+              disabled={count === 1 ? true : false}
             >
               <RemoveOutlinedIcon />
             </Button>

@@ -14,14 +14,14 @@ import { useNavigate, useParams } from 'react-router-dom'
 const ItemInfo = () => {
   const dispatch = useDispatch()
   const storeData = useSelector(store => store.storeData)
-  const { singleItem, user, cart } = storeData
+  const { singleItem, user } = storeData
   const [img, setImg] = useState()
   const params = useParams()
   let navigate = useNavigate()
 
   useEffect(() => {
     getSingleItem(params.itemId, dispatch)
-  }, [])
+  }, [params.itemId, dispatch])
 
   const { id, body } = singleItem
   const {
@@ -37,7 +37,7 @@ const ItemInfo = () => {
   } = body
 
   useEffect(() => {
-    if (images.length == 0) return
+    if (images.length === 0) return
     setImg(images[0])
     const timer = setInterval(
       () => setImg(images[Math.floor(Math.random() * images.length)]),
@@ -52,7 +52,7 @@ const ItemInfo = () => {
     dispatch(addItemCart({ id, img: images[0], title, count: 1, price }))
   }
 
-  if (id == -1) return
+  if (id === -1) return
   return (
     <div className='ItemInfo'>
       <div className='ItemInfo-btn-back'>
@@ -63,7 +63,7 @@ const ItemInfo = () => {
       <div className='info'>
         <div className='info-left'>
           <div className='imageUrl'>
-            <img src={`${img}`} alt='image item' className='image' />
+            <img src={`${img}`} alt='itemInfoImage' className='image' />
           </div>
           {user.isEntered ? (
             <Button

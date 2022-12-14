@@ -20,7 +20,7 @@ const CartItemList = () => {
           <KeyboardBackspaceOutlinedIcon />
         </Button>
       </div>
-      <span className='content'>Cart</span>
+      <div className='content'>Cart</div>
       {cartItems.map(item => <CartItem key={item.id} info={item}/>)}
     </div>
   )

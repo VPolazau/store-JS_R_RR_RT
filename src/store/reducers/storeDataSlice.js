@@ -30,7 +30,7 @@ export const storeDataSlice = createSlice({
     },
 
     updateProducts: (state, action) => {
-      state.products = action.payload
+      if (action.payload.length > 0) state.products = action.payload
     },
 
     updateSigleItem: (state, action) => {
@@ -48,7 +48,7 @@ export const storeDataSlice = createSlice({
     },
 
     decItemCart: (state, action) => {
-      if (state.cart.find(item => item.id === action.payload).count == 1) {
+      if (state.cart.find(item => item.id === action.payload).count === 1) {
         const indx = state.cart.findIndex(item => item.id === action.payload)
         state.cart.splice(indx, 1)
       } else state.cart.find(item => item.id === action.payload).count--
@@ -57,7 +57,7 @@ export const storeDataSlice = createSlice({
     removeItemCart: (state, action) => {
       const indx = state.cart.findIndex(item => item.id === action.payload)
       state.cart.splice(indx, 1)
-    }
+    },
   },
 })
 

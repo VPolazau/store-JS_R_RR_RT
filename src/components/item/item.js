@@ -8,8 +8,15 @@ import { useNavigate } from 'react-router-dom'
 
 const Item = ({ id, info }) => {
   const loadingType = useSelector(store => store.storeData.dataLoadState)
+  const user = useSelector(store => store.storeData.user)
   let navigate = useNavigate()
   const { imageUrl, title, rating, price, discountPercentage } = info
+
+  const onItemClicked = () => {
+    user.isEntered
+      ? navigate(`/user-${user.name}/product/${id}`)
+      : navigate(`/user-guest/product/${id}`)
+  }
 
   const onLoadView = (
     <>
@@ -33,7 +40,7 @@ const Item = ({ id, info }) => {
   const view = (
     <>
       <div className='imageUrl'>
-        <img src={`${imageUrl}`} alt='image item' className='image' />
+        <img src={`${imageUrl}`} alt='itemImage' className='image' />
       </div>
       <div className='title'>{title}</div>
       <div className='rating'>
@@ -58,7 +65,7 @@ const Item = ({ id, info }) => {
   )
 
   return (
-    <div className='Item' onClick={() => navigate(`/product/${id}`)}>
+    <div className='Item' onClick={onItemClicked}>
       {loadingType === 0 && onLoadView}
       {loadingType === 1 && view}
     </div>

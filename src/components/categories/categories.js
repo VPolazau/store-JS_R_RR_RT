@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 
-import { getCategories } from '../../service/shop-service'
+import { getCategories, getProductsByCategory } from '../../service/shop-service'
 
 import './categories.css'
-import { btnEvent } from '../events/event'
+import { useDispatch } from 'react-redux'
 
 const Categories = () => {
+  const dispatch = useDispatch()
+  let navigate = useNavigate()
   const [categories, setCategories] = useState([])
   const [alignment, setAlignment] = useState('all')
 
@@ -16,8 +20,12 @@ const Categories = () => {
   }, [])
 
   const handleChange = (event, newAlignment) => {
-    btnEvent.emit('onChangeCategory', event.target.value) // category onClick
+    getProductsByCategory(newAlignment, dispatch)
     setAlignment(newAlignment)
+    if(newAlignment === 'all'){
+      navigate(`all/page-1`)
+    }
+    else navigate(newAlignment)
   }
 
   return (

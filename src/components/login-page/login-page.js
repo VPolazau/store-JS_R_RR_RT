@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 import TextField from '@mui/material/TextField'
 import { Button } from '@mui/material'
 
-import './login-page.css'
-import { useDispatch } from 'react-redux'
 import { addUser } from '../../store/reducers/storeDataSlice'
-import { useNavigate } from 'react-router-dom'
+
+import './login-page.css'
 
 const LoginPage = () => {
   const inputNameRef = useRef()
@@ -15,7 +17,7 @@ const LoginPage = () => {
 
   const handlerAddUser = () => {
     dispatch(addUser(inputNameRef.current.value))
-    navigate(-1)
+    navigate(`/user-${inputNameRef.current.value}/products/all/page-1`)
   }
 
   return (
@@ -27,16 +29,16 @@ const LoginPage = () => {
         variant='outlined'
         className='input-name'
         inputRef={inputNameRef}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={e => setInput(e.target.value)}
       />
       <Button
-          variant='contained'
-          className='user-enter-btn'
-          disabled={input === '' ? true : false}
-          onClick={handlerAddUser}
-        >
-          Enter
-        </Button>
+        variant='contained'
+        className='user-enter-btn'
+        disabled={input === '' ? true : false}
+        onClick={handlerAddUser}
+      >
+        Enter
+      </Button>
     </div>
   )
 }

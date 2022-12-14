@@ -1,16 +1,17 @@
 import React from 'react'
 
+import { Outlet } from 'react-router-dom'
 import Categories from '../categories'
-import ItemList from '../item-list/item-list'
 
 import './item-list-page.css'
 
 const ItemListPage = () => {
-    
-    return <div className='ItemListPage'>
+  return (
+    <div className='ItemListPage'>
       <Categories />
-      <ItemList />
+      <Outlet />
     </div>
+  )
 }
 
 export default ItemListPage
