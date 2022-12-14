@@ -5,14 +5,17 @@ import { Button } from '@mui/material'
 import './login-page.css'
 import { useDispatch } from 'react-redux'
 import { addUser } from '../../store/reducers/storeDataSlice'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
   const inputNameRef = useRef()
   const [input, setInput] = useState('')
   const dispatch = useDispatch()
+  let navigate = useNavigate()
 
   const handlerAddUser = () => {
     dispatch(addUser(inputNameRef.current.value))
+    navigate(-1)
   }
 
   return (

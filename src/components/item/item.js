@@ -4,9 +4,11 @@ import Skeleton from '@mui/material/Skeleton'
 
 import './item.css'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const Item = ({ id, info }) => {
   const loadingType = useSelector(store => store.storeData.dataLoadState)
+  let navigate = useNavigate()
   const { imageUrl, title, rating, price, discountPercentage } = info
 
   const onLoadView = (
@@ -56,7 +58,7 @@ const Item = ({ id, info }) => {
   )
 
   return (
-    <div className='Item' onClick={() => console.log('item', id)}>
+    <div className='Item' onClick={() => navigate(`/product/${id}`)}>
       {loadingType === 0 && onLoadView}
       {loadingType === 1 && view}
     </div>

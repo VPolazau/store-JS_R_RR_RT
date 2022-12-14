@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Button, IconButton, Rating } from '@mui/material'
+import { Button, Rating } from '@mui/material'
 import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 
@@ -9,15 +9,18 @@ import { getSingleItem } from '../../service/shop-service'
 import { addItemCart } from '../../store/reducers/storeDataSlice'
 
 import './item-info.css'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const ItemInfo = () => {
   const dispatch = useDispatch()
   const storeData = useSelector(store => store.storeData)
   const { singleItem, user, cart } = storeData
   const [img, setImg] = useState()
+  const params = useParams()
+  let navigate = useNavigate()
 
   useEffect(() => {
-    getSingleItem(2, dispatch)
+    getSingleItem(params.itemId, dispatch)
   }, [])
 
   const { id, body } = singleItem
@@ -53,7 +56,7 @@ const ItemInfo = () => {
   return (
     <div className='ItemInfo'>
       <div className='ItemInfo-btn-back'>
-        <Button variant='contained' color='primary'>
+        <Button variant='contained' color='primary' onClick={() => navigate(-1)}>
           <KeyboardBackspaceOutlinedIcon />
         </Button>
       </div>

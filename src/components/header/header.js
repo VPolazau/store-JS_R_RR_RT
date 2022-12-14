@@ -6,8 +6,10 @@ import { IconButton } from '@mui/material'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 import './header.css'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  let navigate = useNavigate()
   const user = useSelector(store => store.storeData.user)
   const cart = useSelector(store => store.storeData.cart)
   const { isEntered, name } = user
@@ -21,7 +23,7 @@ const Header = () => {
   const guestView = (
     <div className='Header'>
       <span className='logo'>Online Store</span>
-      <Button variant='outlined' className='login ml'>
+      <Button variant='outlined' className='login ml' onClick={() => navigate('/login')}>
         Log in
       </Button>
     </div>
@@ -32,11 +34,11 @@ const Header = () => {
       <span className='logo'>Online Store</span>
       <span className='hello ml'>Hello, {name}</span>
       {amountItemsInCart ? (
-        <IconButton className='cart-btn with-count' count={amountItemsInCart}>
+        <IconButton className='cart-btn with-count' count={amountItemsInCart} onClick={() => navigate('/cart')}>
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       ) : (
-        <IconButton className='cart-btn'>
+        <IconButton className='cart-btn' onClick={() => navigate('/cart')}>
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       )}

@@ -30,10 +30,11 @@ const ItemList = () => {
     btnEvent.addListener('onChangeCategory', c => setCategory(c))
   }, [])
 
-  const handleChange = (event, value) => {
+  const handleChangePage = (event, value) => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     setPage(value)
+    
   }
 
   return (
@@ -46,7 +47,7 @@ const ItemList = () => {
       </div>
       {category === 'all' ? (
         <Stack spacing={2} sx={{ marginLeft: 'auto', marginRight: '5%' }}>
-          <Pagination count={5} onChange={handleChange} page={page} />
+          <Pagination count={5} onChange={handleChangePage} page={page} />
         </Stack>
       ) : null}
     </div>

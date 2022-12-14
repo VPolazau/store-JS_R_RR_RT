@@ -1,26 +1,21 @@
 import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import ErrorBoundry from '../error-boundry'
 import Header from '../header'
-import LoginPage from '../login-page'
-import ItemListPage from '../item-list-page'
-import ItemInfo from '../item-info'
-import CartItemList from '../cart-item-list'
+import PagesRoutes from '../routes/pages-routes'
 
 import './app.css'
 
-const App = () => {
-  // const storeData = useSelector(store => store.storeData)
-  
 
+const App = () => {
   return (
     <div className='App-container'>
       <ErrorBoundry>
-        <Header />
-        {/* <LoginPage /> */}
-        {/* <ItemListPage /> */}
-        {/* <ItemInfo /> */}
-        <CartItemList />
+        <Router>
+          <Header />
+          <PagesRoutes />
+        </Router>
       </ErrorBoundry>
     </div>
   )
