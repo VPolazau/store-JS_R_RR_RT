@@ -7,7 +7,6 @@ import './cart-item-list.css'
 const CartItemList = () => {
   const cartItems = useSelector(store => store.storeData.cart)
   
-  console.log(cartItems)
   return (
     <div className='CartItemList'>
       <span className='content'>Cart</span>
