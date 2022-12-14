@@ -23,7 +23,7 @@ const ItemList = () => {
   }, [category])
 
   useEffect(() => {
-    getAllProducts(page * 20 - 20, dispatch)
+    getAllProducts(page * 50 - 50, dispatch)
   }, [page])
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const ItemList = () => {
       </div>
       {category === 'all' ? (
         <Stack spacing={2} sx={{ marginLeft: 'auto', marginRight: '5%' }}>
-          <Pagination count={5} onChange={handleChangePage} page={page} />
+          <Pagination count={2} onChange={handleChangePage} page={page} />
         </Stack>
       ) : null}
     </div>
