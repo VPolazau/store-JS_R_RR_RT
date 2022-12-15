@@ -14,7 +14,7 @@ const Categories = () => {
   let navigate = useNavigate()
   const params = useParams()
   const [categories, setCategories] = useState([])
-  const [alignment, setAlignment] = useState(params.category)
+  const [alignment, setAlignment] = useState(params.category || 'all')
 
   useEffect(() => {
     getCategories().then(res => setCategories(res))
