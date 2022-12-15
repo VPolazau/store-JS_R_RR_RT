@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -12,6 +12,16 @@ import { addItemCart, decItemCart, removeItemCart } from '../../store/reducers/s
 const CartItem = ({ info }) => {
   const dispatch = useDispatch()
   const { id, img, count, price, title } = info
+  const [isDeleted, setIsDeleted] = useState(false)
+
+  useEffect(() => {
+    if(!isDeleted) return
+    const timer = setTimeout(() => dispatch(removeItemCart(id)), 2000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [isDeleted])
+  
 
   const dec = () => {
     dispatch(decItemCart(id))
@@ -22,11 +32,14 @@ const CartItem = ({ info }) => {
   }
 
   const removeItem = () => {
-    dispatch(removeItemCart(id))
+    setIsDeleted(true)
   }
 
+  let classCartItem = 'CartItem'
+  if(isDeleted) classCartItem += ' isDeleted'
+
   return (
-    <div className='CartItem'>
+    <div className={classCartItem}>
       <div className='imageUrl'>
         <img src={`${img}`} alt='cartItemImage' className='image' />
       </div>
