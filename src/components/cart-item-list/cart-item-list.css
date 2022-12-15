@@ -8,10 +8,28 @@
   margin: 20px 0px;
 }
 
-.CartItemList .content{
+.CartItemList .header {
+  top: 0px;
+  background-color: rgba(14, 84, 85, 0.684);
+  color: rgb(255, 255, 255);
+  z-index: 2;
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.CartItemList .header .title{
   font-size: 2.5rem;
   font-weight: 900;
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-  border-bottom: 1px dashed #000;
+  margin-left: 20px;
+}
+
+.CartItemList .header .sum {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-right: 20px;
 }
