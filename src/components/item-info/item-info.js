@@ -74,9 +74,12 @@ const ItemInfo = () => {
               <AddShoppingCartIcon />
             </Button>
           ) : (
-            <Button variant='contained' sx={{ marginRight: '30px' }} disabled>
-              <AddShoppingCartIcon />
-            </Button>
+            <>
+              <Button variant='contained' sx={{ marginRight: '30px' }} disabled>
+                <AddShoppingCartIcon />
+              </Button>
+              <p>You must be logged in to add this product to your cart</p>
+            </>
           )}
         </div>
         <div className='info-right'>
