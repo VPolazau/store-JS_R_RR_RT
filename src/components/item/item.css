@@ -21,8 +21,7 @@
 }
 
 .Item .content.inCart {
-  filter: blur(2px);
-  filter: contrast(30%);
+  animation: blur 1s ease-in-out 0ms 1 normal forwards;
 }
 
 .Item .cart-icon {
@@ -34,6 +33,7 @@
 }
 
 .Item .cart-icon.inCart {
+  animation: z 2s ease-in-out 0ms 1 normal forwards;
   z-index: 1;
 }
 
@@ -81,4 +81,24 @@
   display: block;
   max-width: 90%;
   max-height: 90%;
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(0px);
+    filter: contrast(100%);
+  }
+  100% {
+    filter: blur(2px);
+    filter: contrast(30%);
+  }
+}
+
+@keyframes z {
+  0% {
+    z-index: -1;
+  }
+  100% {
+    z-index: 1;
+  }
 }
