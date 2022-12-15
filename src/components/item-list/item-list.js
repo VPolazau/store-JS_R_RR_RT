@@ -11,12 +11,20 @@ import Item from '../item/item'
 import './item-list.css'
 
 const ItemList = () => {
-  const products = useSelector(store => store.storeData.products)
-  const user = useSelector(store => store.storeData.user)
+  const storeData = useSelector(store => store.storeData)
+  const { products, user, cart } = storeData
   const dispatch = useDispatch()
   let navigate = useNavigate()
   const params = useParams()
   let page = params.page
+
+  const allAndCart = []
+  products.forEach(p => {
+    if(cart.some(item => item.id === p.id)){
+      allAndCart.push({...p, isInCart: true})
+    }
+    else allAndCart.push(p)
+  })
 
   useEffect(() => {
     if (!page) return
@@ -29,14 +37,13 @@ const ItemList = () => {
     user.isEntered
       ? navigate(`/user-${user.name}/products/all/page-${value}`, { replace: true })
       : navigate(`/user-guest/products/all/page-${value}`, { replace: true })
-    // navigate(`all/page-${value}`)
   }
 
   return (
     <div className='ItemList'>
       <div className='list'>
-        {products.map(item => (
-          <Item key={item.id} id={item.id} info={item.body} />
+        {allAndCart.map(item => (
+          <Item key={item.id} id={item.id} info={item.body} isInCart={item.isInCart} />
         ))}
       </div>
       {page ? (

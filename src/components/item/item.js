@@ -2,15 +2,16 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { IconButton, Rating } from '@mui/material'
+import { Backdrop, IconButton, Rating, Tooltip } from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import Skeleton from '@mui/material/Skeleton'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 import { addItemCart } from '../../store/reducers/storeDataSlice'
 
 import './item.css'
 
-const Item = ({ id, info }) => {
+const Item = ({ id, info, isInCart }) => {
   const dispatch = useDispatch()
   const loadingType = useSelector(store => store.storeData.dataLoadState)
   const user = useSelector(store => store.storeData.user)
@@ -23,9 +24,9 @@ const Item = ({ id, info }) => {
       : navigate(`/user-guest/product/${id}`)
   }
 
-  const addToCart = (event) => {
+  const addToCart = event => {
     event.stopPropagation()
-    dispatch(addItemCart({id, img: imageUrl, title, count: 1, price}))
+    dispatch(addItemCart({ id, img: imageUrl, title, count: 1, price }))
   }
 
   const onLoadView = (
@@ -72,17 +73,42 @@ const Item = ({ id, info }) => {
             {(price * discountPercentage).toFixed(0)}$
           </span>
         </div>
-        <IconButton color='primary' aria-label='add to shopping cart' onClick={addToCart} disabled={user.isEntered ? false : true}>
-          <AddShoppingCartIcon />
-        </IconButton>
+        <Tooltip
+          title={
+            user.isEntered ? '' : 'You must be logged in to add this product to your cart'
+          }
+        >
+          <span>
+            <IconButton
+              color='primary'
+              aria-label='add to shopping cart'
+              onClick={addToCart}
+              disabled={user.isEntered ? (isInCart ? true : false) : true}
+            >
+              <AddShoppingCartIcon />
+            </IconButton>
+          </span>
+        </Tooltip>
       </div>
     </>
   )
 
+  let classItemContent = 'content'
+  let classItemIcon = 'cart-icon'
+  if (isInCart && loadingType === 1) {
+    classItemContent += ' inCart'
+    classItemIcon += ' inCart'
+  }
+
   return (
     <div className='Item' onClick={onItemClicked}>
-      {loadingType === 0 && onLoadView}
-      {loadingType === 1 && view}
+      <div className={classItemContent}>
+        {loadingType === 0 && onLoadView}
+        {loadingType === 1 && view}
+      </div>
+        <div className={classItemIcon}>
+          <ShoppingCartOutlinedIcon sx={{ fontSize: 100 }} />
+        </div>
     </div>
   )
 }
