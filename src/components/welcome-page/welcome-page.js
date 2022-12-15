@@ -13,8 +13,8 @@ const WelcomePage = () => {
 
   const onStartShopping = () => {
     user.isEntered
-      ? navigate(`user-${user.name}/products/all/page-1`)
-      : navigate('user-guest/products/all/page-1')
+      ? navigate(`user/products/all/page-1`)
+      : navigate('guest/products/all/page-1')
   }
 
   return (

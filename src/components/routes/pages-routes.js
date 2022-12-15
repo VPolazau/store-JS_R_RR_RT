@@ -17,20 +17,20 @@ const PagesRoutes = () => {
       <Route path='/login' element={<LoginPage />} />
       {user.isEntered ? (
         <>
-          <Route path={`user-${user.name}/products/*`} element={<ItemListPage />}>
+          <Route path={`user/products/*`} element={<ItemListPage />}>
             <Route path='all/page-:page' element={<ItemList />} />
             <Route path=':category' element={<ItemList />} />
           </Route>
-          <Route path={`user-${user.name}/product/:itemId`} element={<ItemInfo />} />
-          <Route path={`user-${user.name}/cart`} element={<CartItemList />} />
+          <Route path={`user/product/:itemId`} element={<ItemInfo />} />
+          <Route path={`user/cart`} element={<CartItemList />} />
         </>
       ) : (
         <>
-          <Route path='user-guest/products/*' element={<ItemListPage />}>
+          <Route path='guest/products/*' element={<ItemListPage />}>
             <Route path='all/page-:page' element={<ItemList />} />
             <Route path=':category' element={<ItemList />} />
           </Route>
-          <Route path='user-guest/product/:itemId'element={<ItemInfo />} />
+          <Route path='guest/product/:itemId'element={<ItemInfo />} />
         </>
       )}
     </Routes>

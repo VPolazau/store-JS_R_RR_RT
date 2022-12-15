@@ -34,11 +34,11 @@ const Header = () => {
       <span className='logo'>Online Store</span>
       <span className='hello ml'>Hello, {name}</span>
       {amountItemsInCart ? (
-        <IconButton className='cart-btn with-count' count={amountItemsInCart} onClick={() => navigate(`user-${user.name}/cart`)}>
+        <IconButton className='cart-btn with-count' count={amountItemsInCart} onClick={() => navigate(`user/cart`)}>
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       ) : (
-        <IconButton className='cart-btn' onClick={() => navigate(`user-${user.name}/cart`)}>
+        <IconButton className='cart-btn' onClick={() => navigate(`user/cart`)}>
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       )}

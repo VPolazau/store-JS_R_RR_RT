@@ -35,8 +35,8 @@ const ItemList = () => {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
     user.isEntered
-      ? navigate(`/user-${user.name}/products/all/page-${value}`, { replace: true })
-      : navigate(`/user-guest/products/all/page-${value}`, { replace: true })
+      ? navigate(`/user/products/all/page-${value}`, { replace: true })
+      : navigate(`/guest/products/all/page-${value}`, { replace: true })
   }
 
   return (

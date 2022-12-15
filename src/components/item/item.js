@@ -20,8 +20,8 @@ const Item = ({ id, info, isInCart }) => {
 
   const onItemClicked = () => {
     user.isEntered
-      ? navigate(`/user-${user.name}/product/${id}`)
-      : navigate(`/user-guest/product/${id}`)
+      ? navigate(`/user/product/${id}`)
+      : navigate(`/guest/product/${id}`)
   }
 
   const addToCart = event => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
@@ -12,8 +12,9 @@ import { useDispatch } from 'react-redux'
 const Categories = () => {
   const dispatch = useDispatch()
   let navigate = useNavigate()
+  const params = useParams()
   const [categories, setCategories] = useState([])
-  const [alignment, setAlignment] = useState('all')
+  const [alignment, setAlignment] = useState(params.category)
 
   useEffect(() => {
     getCategories().then(res => setCategories(res))

@@ -17,7 +17,7 @@ const LoginPage = () => {
 
   const handlerAddUser = () => {
     dispatch(addUser(inputNameRef.current.value))
-    navigate(`/user-${inputNameRef.current.value}/products/all/page-1`)
+    navigate(`/user/products/all/page-1`)
   }
 
   return (
