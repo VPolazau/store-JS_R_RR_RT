@@ -23,8 +23,8 @@ const Header = () => {
   const guestView = (
     <div className='Header'>
       <span className='logo'>Online Store</span>
-      <Button variant='outlined' className='login ml' onClick={() => navigate('/login')}>
-        Log in
+      <Button variant='outlined' className='signin ml' onClick={() => navigate('/signin')}>
+        Sign In
       </Button>
     </div>
   )

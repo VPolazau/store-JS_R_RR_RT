@@ -1,11 +1,11 @@
-.LoginPage {
+.SigninPage {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
 }
 
-.LoginPage .input-name{
+.SigninPage .input-name{
   background-color: white;
   margin-right: 30px;
 }

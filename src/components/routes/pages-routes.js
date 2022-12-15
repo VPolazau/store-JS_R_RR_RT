@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
-import LoginPage from '../login-page'
+import SigninPage from '../signin-page'
 import ItemListPage from '../item-list-page'
 import ItemInfo from '../item-info'
 import CartItemList from '../cart-item-list'
@@ -14,7 +14,7 @@ const PagesRoutes = () => {
   return (
     <Routes>
       <Route path='/' element={<WelcomePage />} />
-      <Route path='/login' element={<LoginPage />} />
+      <Route path='/signin' element={<SigninPage />} />
       {user.isEntered ? (
         <>
           <Route path={`user/products/*`} element={<ItemListPage />}>

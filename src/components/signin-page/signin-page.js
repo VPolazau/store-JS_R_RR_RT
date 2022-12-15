@@ -7,9 +7,9 @@ import { Button } from '@mui/material'
 
 import { addUser } from '../../store/reducers/storeDataSlice'
 
-import './login-page.css'
+import './signin-page.css'
 
-const LoginPage = () => {
+const SigninPage = () => {
   const inputNameRef = useRef()
   const [input, setInput] = useState('')
   const dispatch = useDispatch()
@@ -21,7 +21,7 @@ const LoginPage = () => {
   }
 
   return (
-    <div className='LoginPage'>
+    <div className='SigninPage'>
       <TextField
         id='outlined-basic'
         placeholder='enter name'
@@ -43,4 +43,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SigninPage
