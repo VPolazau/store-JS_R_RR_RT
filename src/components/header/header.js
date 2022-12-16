@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '@mui/material/Button'
 import { IconButton } from '@mui/material'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined'
 
 import './header.css'
-import { useNavigate } from 'react-router-dom'
+import { removeUser } from '../../store/reducers/storeDataSlice'
 
 const Header = () => {
   let navigate = useNavigate()
+  const dispatch = useDispatch()
   const user = useSelector(store => store.storeData.user)
   const cart = useSelector(store => store.storeData.cart)
   const { isEntered, name } = user
@@ -20,10 +23,24 @@ const Header = () => {
     else setAmountItemsInCart(cart.reduce((acc, item) => acc + item.count, 0))
   }, [cart])
 
+  const onLogOut = () => {
+
+    const userInfo = JSON.parse(localStorage.getItem(user.email))
+    localStorage.removeItem(user.email)
+    userInfo.isEntered = false
+    localStorage.setItem(user.email, JSON.stringify(userInfo))
+
+    dispatch(removeUser())
+  }
+
   const guestView = (
     <div className='Header'>
       <span className='logo'>Online Store</span>
-      <Button variant='outlined' className='signin ml' onClick={() => navigate('/signin')}>
+      <Button
+        variant='outlined'
+        className='signin ml'
+        onClick={() => navigate('/signin')}
+      >
         Sign In
       </Button>
     </div>
@@ -34,7 +51,11 @@ const Header = () => {
       <span className='logo'>Online Store</span>
       <span className='hello ml'>Hello, {name}</span>
       {amountItemsInCart ? (
-        <IconButton className='cart-btn with-count' count={amountItemsInCart} onClick={() => navigate(`user/cart`)}>
+        <IconButton
+          className='cart-btn with-count'
+          count={amountItemsInCart}
+          onClick={() => navigate(`user/cart`)}
+        >
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       ) : (
@@ -42,6 +63,9 @@ const Header = () => {
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       )}
+      <IconButton className='log-out-btn' onClick={onLogOut}>
+        <LoginOutlinedIcon color='primary' fontSize='large' />
+      </IconButton>
     </div>
   )
 

@@ -14,71 +14,64 @@ import TextField from '@mui/material/TextField'
 
 import { addUser } from '../../store/reducers/storeDataSlice'
 
-import './signin-page.css'
+import './signup-page.css'
 
-const SigninPage = () => {
+const SignupPage = () => {
   const inputLoginRef = useRef()
   const inputPassowrdRef = useRef()
+  const inputNameRef = useRef()
   const [input, setInput] = useState('')
+  const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState(false)
   const dispatch = useDispatch()
   let navigate = useNavigate()
 
   const handlerAddUser = () => {
-    if (localStorage.getItem(inputLoginRef.current.value)) {
-      const userInfo = JSON.parse(localStorage.getItem(inputLoginRef.current.value))
-      if (userInfo.password === inputPassowrdRef.current.value) {
-        
-        const userUpdate = JSON.parse(localStorage.getItem(inputLoginRef.current.value))
-        localStorage.removeItem(inputLoginRef.current.value)
-        userUpdate.isEntered = true
-        localStorage.setItem(inputLoginRef.current.value, JSON.stringify(userUpdate))
-
-        dispatch(
-          addUser({
-            name: inputLoginRef.current.value,
-            emal: inputLoginRef.current.value,
-          })
-        )
-        navigate(-1)
-      } else setError(true)
-    } else setError(true)
+    const inform = {
+      name: inputNameRef.current.value,
+      password: inputPassowrdRef.current.value,
+      isEntered: true,
+    }
+    localStorage.setItem(inputLoginRef.current.value, JSON.stringify(inform))
+    dispatch(
+      addUser({ name: inputNameRef.current.value, email: inputLoginRef.current.value })
+    )
+    navigate(-2)
   }
 
   const handleClickShowPassword = () => setShowPassword(show => !show)
 
   return (
-    <div className='SigninPage'>
+    <div className='SignupPage'>
       <div className='login-form'>
         <div className='hibrid-login-form'>
-          <h1>Sign In</h1>
+          <h1>Sign Up</h1>
           <TextField
-            error={error ? true : false}
-            id='outlined-basic'
+            placeholder='Name'
+            size='small'
+            variant='outlined'
+            autoComplete='off'
+            className='input-name'
+            inputRef={inputNameRef}
+            onChange={e => setName(e.target.value)}
+          />
+          <TextField
             placeholder='Email'
             size='small'
             variant='outlined'
             autoComplete='off'
             className='input-login'
             inputRef={inputLoginRef}
-            onChange={e => {
-              setInput(e.target.value)
-              setError(false)
-            }}
+            onChange={e => setInput(e.target.value)}
           />
           <FormControl size='small' variant='outlined' className='password'>
             <OutlinedInput
-              error={error ? true : false}
               placeholder='Password'
               id='outlined-adornment-password'
               type={showPassword ? 'text' : 'password'}
               autoComplete='off'
-              onChange={e => {
-                setPassword(e.target.value)
-                setError(false)
-              }}
+              onChange={e => setPassword(e.target.value)}
               inputRef={inputPassowrdRef}
               endAdornment={
                 <InputAdornment position='end'>
@@ -96,21 +89,15 @@ const SigninPage = () => {
           <Button
             variant='contained'
             className='user-enter-btn'
-            disabled={(input && password) === '' ? true : false}
+            disabled={(name && input && password) === '' ? true : false}
             onClick={handlerAddUser}
           >
             Enter
           </Button>
-          <div className='new'>
-            New in Online Store?{'\xa0'}
-            <NavLink to='/signup' className='navLink-signup'>
-              Sign up now.
-            </NavLink>
-          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default SigninPage
+export default SignupPage

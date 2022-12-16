@@ -8,13 +8,16 @@ import CartItemList from '../cart-item-list'
 import WelcomePage from '../welcome-page'
 import { useSelector } from 'react-redux'
 import ItemList from '../item-list/item-list'
+import SignupPage from '../signup-page'
 
 const PagesRoutes = () => {
   const user = useSelector(store => store.storeData.user)
+
   return (
     <Routes>
       <Route path='/' element={<WelcomePage />} />
       <Route path='/signin' element={<SigninPage />} />
+      <Route path='/signup' element={<SignupPage />} />
       {user.isEntered ? (
         <>
           <Route path={`user/products/*`} element={<ItemListPage />}>

@@ -17,7 +17,7 @@ const initialState = {
       stock: null,
     },
   },
-  user: { isEntered: false, name: '' },
+  user: { isEntered: false, name: '', email: '' },
   cart: [],
 }
 
@@ -38,7 +38,19 @@ export const storeDataSlice = createSlice({
     },
 
     addUser: (state, action) => {
-      state.user = { isEntered: true, name: action.payload }
+      state.user = {
+        isEntered: true,
+        name: action.payload.name,
+        email: action.payload.email,
+      }
+    },
+
+    removeUser: (state, action) => {
+      state.user = {
+        isEntered: false,
+        name: '',
+        email: '',
+      }
     },
 
     addItemCart: (state, action) => {
@@ -69,6 +81,7 @@ export const {
   decItemCart,
   removeItemCart,
   addUser,
+  removeUser,
 } = storeDataSlice.actions
 
 export default storeDataSlice.reducer
