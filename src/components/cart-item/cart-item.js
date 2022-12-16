@@ -5,11 +5,12 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 import './cart-item.css'
 import { Button } from '@mui/material'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { addItemCart, decItemCart, removeItemCart } from '../../store/reducers/storeDataSlice'
 
 const CartItem = ({ info }) => {
+  const {user, cart} = useSelector(store => store.storeData)
   const dispatch = useDispatch()
   const { id, img, count, price, title } = info
   const [isDeleted, setIsDeleted] = useState(false)
@@ -17,9 +18,17 @@ const CartItem = ({ info }) => {
   useEffect(() => {
     if(!isDeleted) return
     const timer = setTimeout(() => dispatch(removeItemCart(id)), 2000)
+
+    const userInfo = JSON.parse(localStorage.getItem(user.email))
+    const indxDelItem = userInfo.cart.findIndex(el => el.id === id)
+    userInfo.cart.splice(indxDelItem, 1)
+    localStorage.removeItem(user.email)
+    localStorage.setItem(user.email, JSON.stringify(userInfo))
+
     return () => {
       clearTimeout(timer)
     }
+
   }, [isDeleted])
   
 

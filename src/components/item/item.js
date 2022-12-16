@@ -13,8 +13,8 @@ import './item.css'
 
 const Item = ({ id, info, isInCart }) => {
   const dispatch = useDispatch()
-  const loadingType = useSelector(store => store.storeData.dataLoadState)
-  const user = useSelector(store => store.storeData.user)
+  const storeData = useSelector(store => store.storeData)
+  const { dataLoadState, user, cart } = storeData
   let navigate = useNavigate()
   const { imageUrl, title, rating, price, discountPercentage } = info
 
@@ -27,6 +27,11 @@ const Item = ({ id, info, isInCart }) => {
   const addToCart = event => {
     event.stopPropagation()
     dispatch(addItemCart({ id, img: imageUrl, title, count: 1, price }))
+
+    const userInfo = JSON.parse(localStorage.getItem(user.email))
+    userInfo.cart.push({ id, img: imageUrl, title, count: 1, price })
+    localStorage.removeItem(user.email)
+    localStorage.setItem(user.email, JSON.stringify(userInfo))
   }
 
   const onLoadView = (
@@ -95,7 +100,7 @@ const Item = ({ id, info, isInCart }) => {
 
   let classItemContent = 'content'
   let classItemIcon = 'cart-icon'
-  if (isInCart && loadingType === 1) {
+  if (isInCart && dataLoadState === 1) {
     classItemContent += ' inCart'
     classItemIcon += ' inCart'
   }
@@ -103,8 +108,8 @@ const Item = ({ id, info, isInCart }) => {
   return (
     <div className='Item' onClick={onItemClicked}>
       <div className={classItemContent}>
-        {loadingType === 0 && onLoadView}
-        {loadingType === 1 && view}
+        {dataLoadState === 0 && onLoadView}
+        {dataLoadState === 1 && view}
       </div>
         <div className={classItemIcon}>
           <ShoppingCartOutlinedIcon sx={{ fontSize: 100 }} />

@@ -22,9 +22,11 @@ const App = () => {
     if (storage.some(user => user.isEntered === true)) {
       const { name, email, cart } = storage.find(user => user.isEntered === true)
       dispatch(addUser({ name, email }))
-      cart.forEach(el => {
-        dispatch(addItemCart(el))
-      });
+      if(cart){
+        cart.forEach(el => {
+          dispatch(addItemCart(el))
+        });
+      }
     }
   })
 
