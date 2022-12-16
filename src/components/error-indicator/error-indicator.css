@@ -1,5 +1,5 @@
 .ErrorIndicator__div {
-  height: 100vh;
+  height: 70vh;
 
   display: flex;
   justify-content: center;
@@ -10,11 +10,12 @@
 .ErrorIndicator__div .span-error {
   font-size: 4rem;
   font-weight: bolder;
-  text-shadow: 2px 2px rgb(0, 157, 89);
+  text-shadow: 2px 2px rgb(157, 0, 0);
 }
 
 .ErrorIndicator__div .description-error {
+  text-align: center;
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.461);
-  text-shadow: 1px 1px rgb(0, 157, 89);
+  text-shadow: 1px 1px rgb(157, 0, 0);
 }
