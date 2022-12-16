@@ -64,7 +64,7 @@ const CartItem = ({ info }) => {
             Payable price: {'\xa0'}
             {price * count}$
           </div>
-          <Button variant='outlined' startIcon={<DeleteIcon />} onClick={removeItem}>
+          <Button variant='outlined' startIcon={<DeleteIcon />} onClick={removeItem} className='btn-del-cart'>
             Delete
           </Button>
         </div>
