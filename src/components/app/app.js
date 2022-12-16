@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { addUser } from '../../store/reducers/storeDataSlice'
+import { addItemCart, addUser } from '../../store/reducers/storeDataSlice'
 
 import ErrorBoundry from '../error-boundry'
 import Header from '../header'
@@ -20,8 +20,11 @@ const App = () => {
       }
     }
     if (storage.some(user => user.isEntered === true)) {
-      const { name, email } = storage.find(user => user.isEntered === true)
+      const { name, email, cart } = storage.find(user => user.isEntered === true)
       dispatch(addUser({ name, email }))
+      cart.forEach(el => {
+        dispatch(addItemCart(el))
+      });
     }
   })
 

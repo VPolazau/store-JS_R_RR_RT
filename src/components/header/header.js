@@ -8,7 +8,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined'
 
 import './header.css'
-import { removeUser } from '../../store/reducers/storeDataSlice'
+import { removeItemCart, removeUser } from '../../store/reducers/storeDataSlice'
 
 const Header = () => {
   let navigate = useNavigate()
@@ -24,13 +24,17 @@ const Header = () => {
   }, [cart])
 
   const onLogOut = () => {
-
     const userInfo = JSON.parse(localStorage.getItem(user.email))
-    localStorage.removeItem(user.email)
     userInfo.isEntered = false
+    userInfo.cart = cart
+    localStorage.removeItem(user.email)
     localStorage.setItem(user.email, JSON.stringify(userInfo))
 
     dispatch(removeUser())
+    cart.forEach(el => {
+      dispatch(removeItemCart(el.id))
+    });
+    navigate('/')
   }
 
   const guestView = (

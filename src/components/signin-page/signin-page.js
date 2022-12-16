@@ -12,7 +12,7 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import TextField from '@mui/material/TextField'
 
-import { addUser } from '../../store/reducers/storeDataSlice'
+import { addItemCart, addUser } from '../../store/reducers/storeDataSlice'
 
 import './signin-page.css'
 
@@ -36,10 +36,14 @@ const SigninPage = () => {
         userUpdate.isEntered = true
         localStorage.setItem(inputLoginRef.current.value, JSON.stringify(userUpdate))
 
+        userInfo.cart.forEach(el => {
+          dispatch(addItemCart(el))
+        })
+
         dispatch(
           addUser({
-            name: inputLoginRef.current.value,
-            emal: inputLoginRef.current.value,
+            name: userUpdate.name,
+            email: inputLoginRef.current.value,
           })
         )
         navigate(-1)
