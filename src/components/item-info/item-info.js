@@ -50,6 +50,10 @@ const ItemInfo = () => {
 
   const addItemToCart = () => {
     dispatch(addItemCart({ id, img: images[0], title, count: 1, price }))
+    const userInfo = JSON.parse(localStorage.getItem(user.email))
+    userInfo.cart.push({ id, img: images[0], title, count: 1, price })
+    localStorage.removeItem(user.email)
+    localStorage.setItem(user.email, JSON.stringify(userInfo))
   }
 
   if (id === -1) return

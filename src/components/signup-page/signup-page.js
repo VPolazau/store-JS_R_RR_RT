@@ -33,6 +33,7 @@ const SignupPage = () => {
       name: inputNameRef.current.value,
       password: inputPassowrdRef.current.value,
       isEntered: true,
+      cart: [],
     }
     localStorage.setItem(inputLoginRef.current.value, JSON.stringify(inform))
     dispatch(

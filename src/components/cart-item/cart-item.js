@@ -33,10 +33,22 @@ const CartItem = ({ info }) => {
   
 
   const dec = () => {
+    const userInfo = JSON.parse(localStorage.getItem(user.email))
+    const indx = userInfo.cart.findIndex(el => el.id === id)
+    userInfo.cart[indx].count--
+    localStorage.removeItem(user.email)
+    localStorage.setItem(user.email, JSON.stringify(userInfo))
+
     dispatch(decItemCart(id))
   }
 
   const inc = () => {
+    const userInfo = JSON.parse(localStorage.getItem(user.email))
+    const indx = userInfo.cart.findIndex(el => el.id === id)
+    userInfo.cart[indx].count++
+    localStorage.removeItem(user.email)
+    localStorage.setItem(user.email, JSON.stringify(userInfo))
+
     dispatch(addItemCart({ id }))
   }
 
