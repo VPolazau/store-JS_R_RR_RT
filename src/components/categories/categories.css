@@ -1,15 +1,35 @@
 .Categories {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   justify-content: flex-start;
+  margin-top: 20px;
 }
 
-.Categories .span-Categories {
-  margin: 0px auto 10px 10px;
+.Categories .span-Category {
+  margin-right: 20px;
   font-size: 30px;
   font-weight: 300;
 }
 
-.Categories .toggle-btn-Categories {
+.toggle-btn-Categories {
+  height: fit-content;
   background-color: white;
+  margin: 30px 0px 0px 30px;
+}
+
+.toggle-btn-Category {
+  height: 40px;
+}
+
+
+@media (max-width: 666px) {
+  .Categories .span-Categories {
+    margin: 0px auto 5px 5px;
+    font-size: 15px;
+  }
+  .Categories .toggle-btn-Categories {
+    background-color: white;
+    font-size: 10px;
+  }
 }
