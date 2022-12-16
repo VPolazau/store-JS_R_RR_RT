@@ -1,12 +1,11 @@
 .Item {
-  position: inherit;
   margin-bottom: -120px;
 }
 
 .Item .content {
   background-color: white;
   padding: 15px;
-  margin: 20px 40px 40px 40px;
+  margin: 0px 40px 60px 40px;
   display: grid;
   grid-template-rows: 10fr 1fr 1fr 1fr;
   width: 230px;

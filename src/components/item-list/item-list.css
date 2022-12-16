@@ -1,14 +1,29 @@
 .ItemList {
-  display: grid;
-  grid-template-rows: 100fr 3fr;
+  width: -webkit-fill-available;
 }
 
 .ItemList .list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: stretch;
+  justify-content: space-around ;
   align-content: flex-start;
   flex-wrap: wrap;
   margin-top: 10px;
-  padding: 20px;
+  padding: 20px
+}
+
+.ItemList .pagination{
+  justify-self: flex-end;
+}
+
+@media (max-width: 500px) {
+  .ItemList .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding: 20px;
+  }
 }

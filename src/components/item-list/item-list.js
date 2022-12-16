@@ -12,7 +12,7 @@ import './item-list.css'
 
 const ItemList = () => {
   const storeData = useSelector(store => store.storeData)
-  const { products, user, cart } = storeData
+  const { products, user, cart, dataLoadState } = storeData
   const dispatch = useDispatch()
   let navigate = useNavigate()
   const params = useParams()
@@ -20,10 +20,9 @@ const ItemList = () => {
 
   const allAndCart = []
   products.forEach(p => {
-    if(cart.some(item => item.id === p.id)){
-      allAndCart.push({...p, isInCart: true})
-    }
-    else allAndCart.push(p)
+    if (cart.some(item => item.id === p.id)) {
+      allAndCart.push({ ...p, isInCart: true })
+    } else allAndCart.push(p)
   })
 
   useEffect(() => {
@@ -46,9 +45,14 @@ const ItemList = () => {
           <Item key={item.id} id={item.id} info={item.body} isInCart={item.isInCart} />
         ))}
       </div>
-      {page ? (
-        <Stack spacing={2} sx={{ marginLeft: 'auto', marginRight: '5%' }}>
-          <Pagination count={2} onChange={handleChangePage} page={+page} />
+      {page && dataLoadState !== 0 ? (
+        <Stack spacing={2}>
+          <Pagination
+            count={2}
+            onChange={handleChangePage}
+            page={+page}
+            sx={{ marginLeft: 'auto', marginRight: '5%' }}
+          />
         </Stack>
       ) : null}
     </div>
