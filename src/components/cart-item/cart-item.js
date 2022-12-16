@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addItemCart, decItemCart, removeItemCart } from '../../store/reducers/storeDataSlice'
 
 const CartItem = ({ info }) => {
-  const {user, cart} = useSelector(store => store.storeData)
+  const user = useSelector(store => store.storeData.user)
   const dispatch = useDispatch()
   const { id, img, count, price, title } = info
   const [isDeleted, setIsDeleted] = useState(false)

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { Backdrop, IconButton, Rating, Tooltip } from '@mui/material'
+import { IconButton, Rating, Tooltip } from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import Skeleton from '@mui/material/Skeleton'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
@@ -13,8 +13,7 @@ import './item.css'
 
 const Item = ({ id, info, isInCart }) => {
   const dispatch = useDispatch()
-  const storeData = useSelector(store => store.storeData)
-  const { dataLoadState, user, cart } = storeData
+  const { dataLoadState, user } = useSelector(store => store.storeData)
   let navigate = useNavigate()
   const { imageUrl, title, rating, price, discountPercentage } = info
 
