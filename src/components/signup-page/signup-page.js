@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import TextField from '@mui/material/TextField'
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined'
 
 import { addUser } from '../../store/reducers/storeDataSlice'
 
@@ -37,13 +38,18 @@ const SignupPage = () => {
     dispatch(
       addUser({ name: inputNameRef.current.value, email: inputLoginRef.current.value })
     )
-    navigate(-2)
+    navigate('/', { replace: true })
   }
 
   const handleClickShowPassword = () => setShowPassword(show => !show)
 
   return (
     <div className='SignupPage'>
+      <div className='btn-back'>
+        <Button variant='contained' color='primary' onClick={() => navigate(-1)}>
+          <KeyboardBackspaceOutlinedIcon />
+        </Button>
+      </div>
       <div className='login-form'>
         <div className='hibrid-login-form'>
           <h1>Sign Up</h1>

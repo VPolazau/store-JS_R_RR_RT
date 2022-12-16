@@ -6,6 +6,11 @@
   margin-top: 60px;
 }
 
+.SigninPage .btn-back{
+  align-self: flex-start;
+  margin: 10px 20px
+}
+
 .SigninPage .login-form {
   display: flex;
   flex-direction: column;
