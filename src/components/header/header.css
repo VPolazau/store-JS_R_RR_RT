@@ -10,7 +10,7 @@
 }
 
 .Header .logo {
-  font-size: 3em;
+  font-size: 3rem;
   font-weight: 900;
   text-shadow: 2px 2px #558abb;
 }
@@ -47,4 +47,40 @@
 
 .Header .ml {
   margin-left: auto;
+}
+
+
+@media (max-width: 666px) {
+  .Header{
+    margin-top: 10px;
+    height: 30px;
+    padding-bottom: 5px;
+  }
+  
+  .Header .logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-shadow: 1px 1px #558abb;
+  }
+  
+  .Header .hello{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 0px;
+  }
+  
+  .Header .signin{
+    margin-right: 10px;
+  }
+  
+  .Header .cart-btn, .Header .log-out-btn{
+    margin-right: 0px;
+  }
+  
+  .Header .with-count::before{
+    top: 2px;
+    right: 2px;
+    width: 15px;
+    height: 15px;
+  }
 }
