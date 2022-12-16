@@ -68,14 +68,14 @@ const ItemInfo = () => {
           {user.isEntered ? (
             <Button
               variant='contained'
-              sx={{ marginRight: '30px' }}
+              className='ItemInfo__btn-add-to-cart'
               onClick={addItemToCart}
             >
               <AddShoppingCartIcon />
             </Button>
           ) : (
             <>
-              <Button variant='contained' sx={{ marginRight: '30px' }} disabled>
+              <Button variant='contained' className='ItemInfo__btn-add-to-cart' disabled>
                 <AddShoppingCartIcon />
               </Button>
               <p>You must be logged in to add this product to your cart</p>

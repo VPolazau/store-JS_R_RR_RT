@@ -32,6 +32,11 @@
   max-height: 90%;
 }
 
+.ItemInfo .info .info-left .ItemInfo__btn-add-to-cart {
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
 .ItemInfo .info .info-right {
   flex-grow: 1;
   background-color: white;
@@ -98,4 +103,35 @@
 .ItemInfo .info .info-right .description p{
   font-size: 1.3rem;
   font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .ItemInfo .info .info-left .imageUrl {
+    width: 300px;
+  }
+
+  .ItemInfo .info .info-right .title {
+    font-size: 2rem;
+  }
+  
+  .ItemInfo .info .info-right .brand {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 670px) {
+  .ItemInfo .info .info-left .imageUrl {
+    width: 90%;
+    margin: 0px 0px 30px 20px;
+  }
+
+  .ItemInfo .info .info-left .ItemInfo__btn-add-to-cart{
+    margin-bottom: 30px;
+    margin-right: 0px;
+  }
+
+  .ItemInfo .info {
+    flex-direction: column;
+  }
+
 }
