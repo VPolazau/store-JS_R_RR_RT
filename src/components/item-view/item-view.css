@@ -1,8 +1,8 @@
-.Item {
+.ItemView {
   margin-bottom: -120px;
 }
 
-.Item .content {
+.ItemView .content {
   background-color: white;
   padding: 15px;
   margin: 0px 40px 60px 40px;
@@ -19,11 +19,11 @@
   user-select: none;
 }
 
-.Item .content.inCart {
+.ItemView .content.inCart {
   animation: blur 1s ease-in-out 0ms 1 normal forwards;
 }
 
-.Item .cart-icon {
+.ItemView .cart-icon {
   position: relative;
   top: -50%;
   left: 35%;
@@ -31,37 +31,37 @@
   color: white;
 }
 
-.Item .cart-icon.inCart {
+.ItemView .cart-icon.inCart {
   animation: z 2s ease-in-out 0ms 1 normal forwards;
   z-index: 1;
 }
 
-.Item .content:hover {
+.ItemView .content:hover {
   box-shadow: 1px 1px 2px rgb(56, 96, 136) inset;
   transition-timing-function: ease-in-out;
 }
 
-.Item .content .rating {
+.ItemView .content .rating {
   display: flex;
   align-items: center;
 }
 
-.Item .content .title {
+.ItemView .content .title {
   font-weight: bold;
   font-size: 18px;
 }
 
-.Item .content .price_n_btn .price .without-discount {
+.ItemView .content .price_n_btn .price .without-discount {
   text-decoration: line-through;
 }
 
-.Item .content .price_n_btn {
+.ItemView .content .price_n_btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.Item .content .price_n_btn .price .with-discount {
+.ItemView .content .price_n_btn .price .with-discount {
   margin-right: 0.5em;
   font-size: 1.1em;
   font-weight: bold;
@@ -69,7 +69,7 @@
   transition-duration: 0.3s;
 }
 
-.Item .content .imageUrl {
+.ItemView .content .imageUrl {
   overflow: hidden;
   display: flex;
   justify-content: center;
