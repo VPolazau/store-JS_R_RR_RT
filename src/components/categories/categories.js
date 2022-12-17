@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import ToggleButton from '@mui/material/ToggleButton'
@@ -11,7 +12,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 import { getCategories, getProductsByCategory } from '../../service/shop-service'
 
 import './categories.css'
-import { useDispatch } from 'react-redux'
+
 
 const Categories = () => {
   const dispatch = useDispatch()

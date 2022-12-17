@@ -44,10 +44,14 @@ const SignupPage = () => {
 
   const handleClickShowPassword = () => setShowPassword(show => !show)
 
+  const onGoBack = () => {
+    navigate(-1)
+  }
+
   return (
     <div className='SignupPage'>
       <div className='btn-back'>
-        <Button variant='contained' color='primary' onClick={() => navigate(-1)}>
+        <Button variant='contained' color='primary' onClick={onGoBack}>
           <KeyboardBackspaceOutlinedIcon />
         </Button>
       </div>

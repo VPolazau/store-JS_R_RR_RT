@@ -56,11 +56,15 @@ const ItemInfo = () => {
     localStorage.setItem(user.email, JSON.stringify(userInfo))
   }
 
+  const onGoBack = () => {
+    navigate(-1)
+  }
+
   if (id === -1) return
   return (
     <div className='ItemInfo'>
       <div className='ItemInfo-btn-back'>
-        <Button variant='contained' color='primary' onClick={() => navigate(-1)}>
+        <Button variant='contained' color='primary' onClick={onGoBack}>
           <KeyboardBackspaceOutlinedIcon />
         </Button>
       </div>

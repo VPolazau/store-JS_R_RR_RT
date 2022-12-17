@@ -37,13 +37,21 @@ const Header = () => {
     navigate('/')
   }
 
+  const onClickCart = () => {
+    navigate(`user/cart`)
+  }
+
+  const onClickSignIn = () => {
+    navigate('/signin')
+  }
+
   const guestView = (
     <div className='Header'>
       <span className='logo'>Online Store</span>
       <Button
         variant='outlined'
         className='signin ml'
-        onClick={() => navigate('/signin')}
+        onClick={onClickSignIn}
       >
         Sign In
       </Button>
@@ -58,12 +66,12 @@ const Header = () => {
         <IconButton
           className='cart-btn with-count'
           count={amountItemsInCart}
-          onClick={() => navigate(`user/cart`)}
+          onClick={onClickCart}
         >
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       ) : (
-        <IconButton className='cart-btn' onClick={() => navigate(`user/cart`)}>
+        <IconButton className='cart-btn' onClick={onClickCart}>
           <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
         </IconButton>
       )}
