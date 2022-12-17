@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ErrorBoundary 1`] = `
+<div
+  className="ErrorIndicator__div"
+>
+  <span
+    className="span-error"
+  >
+    Error!
+  </span>
+  <h1
+    className="description-error"
+  >
+    Something went wrong.
+  </h1>
+</div>
+`;
