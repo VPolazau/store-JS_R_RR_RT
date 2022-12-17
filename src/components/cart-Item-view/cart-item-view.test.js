@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 
 import CartItemView from './cart-item-view'
 
-test('проверка CartItemView', () => {
+test('test CartItemView', () => {
   const mockInfo = {
     img: 'https://i.dummyjson.com/data/products/1/1.jpg',
     title: 'iPhone 9',
