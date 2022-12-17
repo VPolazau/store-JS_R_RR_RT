@@ -1,4 +1,4 @@
-.Header{
+.HeaderView{
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -9,27 +9,27 @@
   border-bottom: 2px solid black;
 }
 
-.Header .logo {
+.HeaderView .logo {
   font-size: 3rem;
   font-weight: 900;
   text-shadow: 2px 2px #558abb;
 }
 
-.Header .hello{
+.HeaderView .hello{
   font-size: 2em;
   font-weight: 500;
   margin-right: 20px;
 }
 
-.Header .signin{
+.HeaderView .signin{
   margin-right: 20px;
 }
 
-.Header .cart-btn, .Header .log-out-btn{
+.HeaderView .cart-btn, .HeaderView .log-out-btn{
   margin-right: 20px;
 }
 
-.Header .with-count::before{
+.HeaderView .with-count::before{
   content: attr(count);
   position: absolute;
   top: -5px;
@@ -45,39 +45,39 @@
   font-size: 12px;
 }
 
-.Header .ml {
+.HeaderView .ml {
   margin-left: auto;
 }
 
 
 @media (max-width: 666px) {
-  .Header{
+  .HeaderView{
     margin-top: 10px;
     height: 30px;
     padding-bottom: 5px;
   }
   
-  .Header .logo {
+  .HeaderView .logo {
     font-size: 1.5rem;
     font-weight: 900;
     text-shadow: 1px 1px #558abb;
   }
   
-  .Header .hello{
+  .HeaderView .hello{
     font-size: 1rem;
     font-weight: 500;
     margin-right: 0px;
   }
   
-  .Header .signin{
+  .HeaderView .signin{
     margin-right: 10px;
   }
   
-  .Header .cart-btn, .Header .log-out-btn{
+  .HeaderView .cart-btn, .HeaderView .log-out-btn{
     margin-right: 0px;
   }
   
-  .Header .with-count::before{
+  .HeaderView .with-count::before{
     top: 2px;
     right: 2px;
     width: 15px;

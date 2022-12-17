@@ -2,13 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import Button from '@mui/material/Button'
-import { IconButton } from '@mui/material'
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined'
-
-import './header.css'
 import { removeItemCart, removeUser } from '../../store/reducers/storeDataSlice'
+import HeaderView from '../header-view'
 
 const Header = () => {
   let navigate = useNavigate()
@@ -33,7 +28,7 @@ const Header = () => {
     dispatch(removeUser())
     cart.forEach(el => {
       dispatch(removeItemCart(el.id))
-    });
+    })
     navigate('/')
   }
 
@@ -45,43 +40,16 @@ const Header = () => {
     navigate('/signin')
   }
 
-  const guestView = (
-    <div className='Header'>
-      <span className='logo'>Online Store</span>
-      <Button
-        variant='outlined'
-        className='signin ml'
-        onClick={onClickSignIn}
-      >
-        Sign In
-      </Button>
-    </div>
+  return (
+    <HeaderView
+      onClickSignIn={onClickSignIn}
+      onClickCart={onClickCart}
+      name={name}
+      amountItemsInCart={amountItemsInCart}
+      isEntered={isEntered}
+      onLogOut={onLogOut}
+    />
   )
-
-  const userView = (
-    <div className='Header'>
-      <span className='logo'>Online Store</span>
-      <span className='hello ml'>Hello, {name}</span>
-      {amountItemsInCart ? (
-        <IconButton
-          className='cart-btn with-count'
-          count={amountItemsInCart}
-          onClick={onClickCart}
-        >
-          <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
-        </IconButton>
-      ) : (
-        <IconButton className='cart-btn' onClick={onClickCart}>
-          <ShoppingCartOutlinedIcon color='secondary' fontSize='large' />
-        </IconButton>
-      )}
-      <IconButton className='log-out-btn' onClick={onLogOut}>
-        <LoginOutlinedIcon color='primary' fontSize='large' />
-      </IconButton>
-    </div>
-  )
-
-  return isEntered ? userView : guestView
 }
 
 export default Header
