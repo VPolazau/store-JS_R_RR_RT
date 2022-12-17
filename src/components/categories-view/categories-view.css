@@ -1,4 +1,4 @@
-.Categories {
+.CategoriesView {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -6,13 +6,13 @@
   margin-top: 20px;
 }
 
-.Categories .span-Category {
+.CategoriesView .span-Category {
   margin-right: 20px;
   font-size: 30px;
   font-weight: 300;
 }
 
-.toggle-btn-Categories {
+.toggle-btn-CategoriesView {
   height: fit-content;
   background-color: white;
   margin: 30px 0px 0px 30px;
@@ -24,11 +24,11 @@
 
 
 @media (max-width: 666px) {
-  .Categories .span-Categories {
+  .CategoriesView .span-CategoriesView {
     margin: 0px auto 5px 5px;
     font-size: 15px;
   }
-  .Categories .toggle-btn-Categories {
+  .CategoriesView .toggle-btn-CategoriesView {
     background-color: white;
     font-size: 10px;
   }
