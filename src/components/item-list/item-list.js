@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 
-import { getAllProducts } from '../../service/shop-service'
+import { getAllProducts, getProductsByCategory } from '../../service/shop-service'
 import Item from '../item/item'
 
 import './item-list.css'
@@ -17,6 +17,7 @@ const ItemList = () => {
   let navigate = useNavigate()
   const params = useParams()
   let page = params.page
+  let category = params.category
 
   const allAndCart = []
   products.forEach(p => {
@@ -24,6 +25,11 @@ const ItemList = () => {
       allAndCart.push({ ...p, isInCart: true })
     } else allAndCart.push(p)
   })
+
+  useEffect(() => {
+    if(!category) return
+    else getProductsByCategory(category, dispatch)
+  }, [category])
 
   useEffect(() => {
     if (!page) return
