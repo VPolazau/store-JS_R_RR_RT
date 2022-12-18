@@ -1,4 +1,4 @@
-.SignupPage {
+.SignupPageView {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,12 +6,12 @@
   margin-top: 60px;
 }
 
-.SignupPage .btn-back{
+.SignupPageView .btn-back{
   align-self: flex-start;
   margin: 10px 20px
 }
 
-.SignupPage .login-form {
+.SignupPageView .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@
   background-color: rgba(75, 75, 75, 0.391);
 }
 
-.SignupPage .login-form .hibrid-login-form{
+.SignupPageView .login-form .hibrid-login-form{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,33 +28,33 @@
   margin: 40px;
 }
 
-.SignupPage .login-form .hibrid-login-form h1{
+.SignupPageView .login-form .hibrid-login-form h1{
   align-self: flex-start;
 }
 
-.SignupPage .login-form .hibrid-login-form .input-name{
+.SignupPageView .login-form .hibrid-login-form .input-name{
   margin: 10px 0px 0px 0px;
   width: -webkit-fill-available;
 }
 
-.SignupPage .login-form .hibrid-login-form .input-login{
+.SignupPageView .login-form .hibrid-login-form .input-login{
   margin: 10px 0px;
   width: -webkit-fill-available;
 }
 
-.SignupPage .login-form .hibrid-login-form .password{
+.SignupPageView .login-form .hibrid-login-form .password{
   margin: 0px 0px 30px 0px;
 }
 
-.SignupPage .login-form .hibrid-login-form .user-enter-btn{
+.SignupPageView .login-form .hibrid-login-form .user-enter-btn{
   align-self: normal;
 }
 
-.SignupPage .login-form .hibrid-login-form .new{
+.SignupPageView .login-form .hibrid-login-form .new{
   margin-top: 60px;
 }
 
-.SignupPage .login-form .hibrid-login-form .new .navLink-signup{
+.SignupPageView .login-form .hibrid-login-form .new .navLink-signup{
   color: black;
   font-weight: 600;
   cursor: pointer;
