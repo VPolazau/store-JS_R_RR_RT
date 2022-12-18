@@ -34,6 +34,7 @@ const SigninPageView = ({ onGoBack, error, handlerAddUser, onChangeInput }) => {
         <div className='hibrid-login-form'>
           <h1>Sign In</h1>
           <TextField
+            data-testid='email'
             error={error ? true : false}
             id='outlined-basic'
             placeholder='Email'
@@ -49,6 +50,7 @@ const SigninPageView = ({ onGoBack, error, handlerAddUser, onChangeInput }) => {
           />
           <FormControl size='small' variant='outlined' className='password'>
             <OutlinedInput
+              data-testid='password'
               error={error ? true : false}
               placeholder='Password'
               id='outlined-adornment-password'
