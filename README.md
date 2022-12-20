@@ -1,11 +1,14 @@
 # Online Store
 
+deploy: https://store-js-r-rr-rt-171222.netlify.app/
+
 - использованный API `https://dummyjson.com`
 - JavaScript
 - css
 - React
-- Redux-toolkit
 - React-router
+- Redux-toolkit
+- Redux-thunk
 - jest(tests)
 
 ### Магазин с товарами
